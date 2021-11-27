@@ -7,6 +7,12 @@ function ContactForm()
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
+    const resetForm = () => {
+        setName('');
+        setEmail('');
+        setMessage('');
+    };
+
     const onSubmit = (e) => 
     {
         e.preventDefault();
@@ -23,19 +29,13 @@ function ContactForm()
             if (response.data.status === 'success') 
             {
               alert("Message Sent.");
-              //this.resetForm()
+              resetForm();
             } 
             else if(response.data.status === 'fail') 
             {
               alert("Message failed to send.")
             }
         });
-    };
-
-    const restForm = () => {
-        setName('');
-        setEmail('');
-        setMessage('');
     };
 
     return (
